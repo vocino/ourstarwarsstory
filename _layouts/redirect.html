@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <!-- Facebook Pixel Code -->
-  <script>
+  <!--[if lt IE 9]><script type="text/javascript">var IE_fix=true;</script><![endif]-->
+  <script type="text/javascript">
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -12,17 +12,25 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1896251207268347');
     fbq('track', 'Redirect');
+    var url = "{{ page.redirect.to }}";
+    if(typeof IE_fix != "undefined") // IE8 and lower fix to pass the http referer
+    {
+      document.write("redirecting..."); // Don't remove this line or appendChild() will fail because it is called before document.onload to make the redirect as fast as possible. Nobody will see this text, it is only a tech fix.
+      var referLink = document.createElement("a");
+      referLink.href = url;
+      document.body.appendChild(referLink);
+      referLink.click();
+    }
+    else { window.location.replace(url); } // All other browsers
   </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1896251207268347&ev=Redirect&noscript=1"
-  /></noscript>
-  <!-- End Facebook Pixel Code -->
   <meta charset="utf-8">
   <title>Redirecting&hellip;</title>
   <link rel="canonical" href="{{ page.redirect.to }}">
-  <script>location="{{ page.redirect.to }}"</script>
-  <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
   <meta name="robots" content="noindex">
-  <h1>Redirecting&hellip;</h1>
-  <a href="{{ page.redirect.to }}">Click here if you are not redirected.</a>
+  <noscript>
+    <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
+    <h1>Redirecting&hellip;</h1>
+    <a href="{{ page.redirect.to }}">Click here if you are not redirected.</a>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1896251207268347&ev=Redirect&noscript=1" />
+  </noscript>
 </html>
