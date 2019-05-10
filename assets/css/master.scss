@@ -45,12 +45,14 @@
 @import "timepicker";
 
 // Overwrite styles...
-//
-// html, body {
-//   background-color: #222;
-//   border-top: #3cf 3px solid;
-// }
-//
-// .logo {
-//   max-width: 100%;
-// }
+
+html, body {
+  background-color: #222;
+  border-top: #3cf 3px solid;
+}
+
+.buttons {
+  a {
+    display: block;
+  }
+}
