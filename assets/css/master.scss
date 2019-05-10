@@ -46,8 +46,16 @@
 
 // Overwrite styles...
 
-html, body {
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
   background-color: #222;
+  background: url(/assets/img/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   border-top: #3cf 3px solid;
 }
 
