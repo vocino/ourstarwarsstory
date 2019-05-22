@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <!--[if lt IE 9]><script type="text/javascript">var IE_fix=true;</script><![endif]-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140651119-1"></script>
   <script type="text/javascript">
+    // Facebook
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -12,6 +14,13 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1896251207268347');
     fbq('track', 'Redirect');
+
+    // Google
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-140651119-1');
+
     var url = "{{ page.redirect.to }}";
     if(typeof IE_fix != "undefined") // IE8 and lower fix to pass the http referer
     {
@@ -24,13 +33,13 @@
     else { window.location.replace(url); } // All other browsers
   </script>
   <meta charset="utf-8">
-  <title>Redirecting&hellip;</title>
+  <title>{{ site.title }} + {{ page.title }}</title>
   <link rel="canonical" href="{{ page.redirect.to }}">
   <meta name="robots" content="noindex">
   <noscript>
     <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
-    <h1>Redirecting&hellip;</h1>
-    <a href="{{ page.redirect.to }}">Click here if you are not redirected.</a>
+    <h1>{{ site.title }} + {{ page.title }}</h1>
+    <a href="{{ page.redirect.to }}">Redirecting you to {{ site.title }} + {{ page.title }}...</a>
     <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1896251207268347&ev=Redirect&noscript=1" />
   </noscript>
 </html>
